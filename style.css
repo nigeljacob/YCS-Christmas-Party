@@ -128,7 +128,7 @@ select{
 
     .smcd{
         width: 50px;
-        margin-right: 10px;
+        margin-right: 10px 0px 10px 0px;
         margin-top: 5px;
         float: inline-end;
     }
