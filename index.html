@@ -16,9 +16,9 @@
         <img class="smcd" src="./Images/Logo 2 (Edited) (1).png" alt="logo">
     </div>
 
-   <section>
+   <section class="NameChooser">
 
-    <div class="texts">
+    <div class="texts" id="text">
         <div class="lottie">
             <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
@@ -27,9 +27,10 @@
         <h1>Secret Santa '23</h1>
         <p id="desc">You have been invited to the YCS Christmas Get-together '23.. <br>Fill in your name to continue</p>
         <h3 id="spinnerTitle">Your Name</h3>
-        <form>
+        <form class="YourDetailsForm" name="MainForm" onsubmit="Submit()" id="mainForm" method="POST">
             <label for="name"></label>
             <select id="name" name="name">
+              <option></option>
               <option value="Seneshi">Seneshi</option>
               <option value="Shamasha">Shamasha</option>
               <option value="Shashini">Shashini</option>
@@ -61,17 +62,65 @@
               <option value="Sithumini">Sithumini</option>
               <option value="Aenock">Aenock</option>
               <option value="Sachini">Sachini</option>
+              <option value="Rashmika">Rashmika</option>
             </select>
           
-          <div class="nameError">
-            <p><span>Name</span> has already chosen a person</p>
+          <div class="nameError" id="nameError">
+            <p><span id="ErrorName">Name</span> has already chosen a person</p>
           </div>
     
-          <input type="submit" value="Continue" class="contineButton">
+          <input type="submit" id="submitButton" value="Continue" class="contineButton">
         </form>
         <p id="nameNotListed">Name not listed? <span>click here</span></p>
     </div>
+
+    
    </section>
+
+   <section class="NameGenerator">
+
+    <div class="spinner">
+        <h1>Hi <span id="voteName"></span>,</h1>
+        <h3 id="text">Your Secret Friend is</h3>
+
+        
+        <div style="height: 200px;">
+            <div class="chosenContainer">
+                <div class="nameBorder">
+                    <div class="box" id="box">
+                        <h1 id="GivenName">Name</h1>
+                    </div>
+                </div>
+
+                <div class="fireworks" id="fireworks">
+                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+    <dotlottie-player src="https://lottie.host/9637f448-9393-465b-a177-2cab7d14f3e4/Mtldtl11zm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+                </div>
+        
+                <div class="chosenNameViewer" id="chosenNameViewer">
+                    <img class="spinWheel" src="./Images/wheel.gif" alt="wheel">
+                </div>
+            </div>
+        </div>
+
+        <div class="message"  id="message">
+            <p>Prepare a gift for <span id="messageName">Name</span> before the 30th of December 2023.. <br>Gift budget: Rs. 1000 or below <br>and also make sure you don't tell <span id="messageName2">Name</span> anything about this 😉 ...</p>
+            <p class="second">You can view this name anytime you click on this link and choose your name</p>
+
+            <button onclick="location.reload()">Done</button>
+        </div>
+    </div>
+
+        
+    
+
+    
+   </section>
+
+   <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"> </script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"> </script>
+   <script src="./script.js"></script>
     
 </body>
 </html>

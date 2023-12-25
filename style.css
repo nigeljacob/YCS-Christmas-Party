@@ -10,6 +10,7 @@ body{
     background-size: 400% 400%;
     font-family: 'Poppins', sans-serif;
     animation: anim 15s ease infinite;
+    overflow: hidden;
 }
 
 section{
@@ -33,8 +34,8 @@ section{
 
 .texts{
     position: relative;
-    width: 600px;
-    height: fit-content;
+    width: 800px;
+    height:  fit-content;
     background: white;
     border-radius: 20px;
     display: flex;
@@ -43,6 +44,22 @@ section{
     flex-direction: column;
     text-align: center;
     padding: 10px 20px 10px 20px;
+    transition: 0.5s opacity ease-in-out;
+}
+
+.spinner{
+    position: relative;
+    width: 800px;
+    height:  fit-content;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 30px 20px 30px;
+    transition: 1s ease-in-out;
 }
 
 .lottie{
@@ -107,6 +124,81 @@ select{
     color: #0000ff;
 }
 
+.spinWheel{
+    width: 200px;
+}
+
+.spinner h3{
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+.chosenNameViewer{
+    position: absolute;
+    transition: 1s opacity ease;
+}
+
+.chosenContainer{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.nameBorder{
+    width: 400px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 100px;
+}
+
+.fireworks{
+    position: absolute;
+    visibility: hidden;
+    z-index: 2;
+    line-height: 100px;
+}
+
+.box{
+    position: absolute;
+    opacity: 0;
+    width: 400px;
+    padding: 10px 20px 10px 20px;
+    border: 2px solid #A7A7A7;
+    visibility: hidden;
+    transition: 1.2s opacity ease ;
+    margin-top: 20px;
+    line-height: 100px;
+}
+
+.box h1{
+    font-size: 30px;
+}
+
+.message p span{
+    font-weight: 600;
+}
+.message {
+    visibility: hidden;
+}
+
+.message .second{
+    margin-top: 10px;
+    font-size: 80%;
+    color: #A7A7A7;
+}
+
+button{
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 20px 10px 20px;
+    background: #cc0000;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    margin-top: 10px;
+}
 @keyframes anim {
     0%{
         background-position: 0% 50%;
@@ -185,6 +277,100 @@ select{
         border-radius: 10px;
         padding: 10px 20px 10px 20px;
         color: white;
+    }
+
+    .texts #nameNotListed{
+        color: #a7a7a7;
+        margin-top: 20px;
+        font-size: 11px;
+        font-weight: 400;
+    }
+    
+    .texts #nameNotListed span{
+        text-decoration: underline;
+        color: #0000ff;
+    }
+
+    
+}
+
+@media screen and (max-width: 350px) {
+
+    .ycs {
+        width: 60px;
+        
+    }
+
+    .smcd{
+        width: 30px;
+        margin-right: 5px 0px 5px 0px;
+        margin-top: 5px;
+    }
+
+    .texts{
+        margin: 0px -20px 0px -20px;
+    }
+
+    section{
+        margin: 10px 10px 10px 10px;
+    }
+    .texts h1{
+        font-size: 20px;
+    }
+
+    .lottie{
+        width: 100px;
+    }
+
+    #desc{
+        font-size: 10px;
+    }
+
+    .texts #spinnerTitle{
+        font-size: 11px;
+    }
+
+    select{
+        width: 100px;
+        text-align: center;
+        padding: 10px;
+        margin-top: 10px;
+        font-weight: 600;
+        font-size: 12px;
+        border: 1px solid #cc0000;
+    }
+
+    .texts .nameError {
+        color: #ff0000;
+        margin-top: 2px;
+        visibility: hidden;
+        font-size: 9px;
+    }
+    
+    .texts .nameError span {
+        font-weight: 600;
+    }
+    
+    .texts input[type = "submit"] {
+        background: #cc0000;
+        border: none;
+        margin-top: 10px;
+        font-size: 9px;
+        border-radius: 10px;
+        padding: 10px 20px 10px 20px;
+        color: white;
+    }
+
+    .texts #nameNotListed{
+        color: #a7a7a7;
+        margin-top: 20px;
+        font-size: 9px;
+        font-weight: 400;
+    }
+    
+    .texts #nameNotListed span{
+        text-decoration: underline;
+        color: #0000ff;
     }
 
     
