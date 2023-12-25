@@ -34,7 +34,7 @@ section{
 .texts{
     position: relative;
     width: 600px;
-    height: 600px;
+    height: fit-content;
     background: white;
     border-radius: 20px;
     display: flex;
@@ -157,12 +157,35 @@ select{
     }
 
     select{
-        width: 200px;
+        width: 150px;
         text-align: center;
         padding: 10px;
         margin-top: 10px;
         font-weight: 600;
-        font-size: 20px;
-        border: 2px solid #cc0000;
+        font-size: 15px;
+        border: 1px solid #cc0000;
     }
+
+    .texts .nameError {
+        color: #ff0000;
+        margin-top: 5px;
+        visibility: hidden;
+        font-size: 12px;
+    }
+    
+    .texts .nameError span {
+        font-weight: 600;
+    }
+    
+    .texts input[type = "submit"] {
+        background: #cc0000;
+        border: none;
+        margin-top: 10px;
+        font-size: 12px;
+        border-radius: 10px;
+        padding: 10px 20px 10px 20px;
+        color: white;
+    }
+
+    
 }
