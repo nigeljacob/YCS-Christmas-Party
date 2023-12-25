@@ -134,11 +134,11 @@ select{
     }
 
     .texts{
-        width: 800px;
+        margin: 0px -20px 0px -20px;
     }
 
     section{
-        margin: 10px;
+        margin: 10px 10px 10px 10px;
     }
     .texts h1{
         font-size: 30px;
@@ -150,5 +150,19 @@ select{
 
     #desc{
         font-size: 12px;
+    }
+
+    .texts #spinnerTitle{
+        font-size: 13px;
+    }
+
+    select{
+        width: 200px;
+        text-align: center;
+        padding: 10px;
+        margin-top: 10px;
+        font-weight: 600;
+        font-size: 20px;
+        border: 2px solid #cc0000;
     }
 }
