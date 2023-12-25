@@ -133,6 +133,10 @@ select{
         float: inline-end;
     }
 
+    .texts{
+        width: 800px;
+    }
+
     section{
         margin: 10px;
     }
