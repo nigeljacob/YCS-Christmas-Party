@@ -211,7 +211,7 @@ button{
     }
 }
 
-/* @media screen and (max-width: 620px) {
+@media screen and (max-width: 620px) {
 
     .ycs {
         width: 80px;
@@ -374,4 +374,4 @@ button{
     }
 
     
-} */
+}
