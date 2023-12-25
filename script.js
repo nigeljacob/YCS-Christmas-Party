@@ -37,6 +37,9 @@ let messageName = document.getElementById("messageName");
 let messageName2 = document.getElementById("messageName2");
 let message = document.getElementById("message");
 
+document.querySelector("meta[name=viewport]").setAttribute('content', 'width=device-width, user-scalable=no, initial-scale='+(1/window.devicePixelRatio)+'');
+
+
 let ChosenNameeEelemnt = document.getElementById("voteName");
 
 
