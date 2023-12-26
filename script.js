@@ -190,7 +190,7 @@ Form.addEventListener('submit', function(event) {
     
                 let index = emailAddresses.indexOf(promtValue);
 
-                if(!votedNames[index] == VotingName) {
+                if(votedNames[index] != VotingName) {
                     alert("The email doesn't mactch the email " + VotingName + " had used.. try again");
                     continue;
                 }
