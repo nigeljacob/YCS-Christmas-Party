@@ -16,10 +16,12 @@ firebase.initializeApp(firebaseConfig);
 var namesArray = ["Seneshi", "Shamasha", "Shashini", "Tenara", "Nicole", "Lihara", "Natheesha", "Trevor", "Thesanya", "Rithun", "Roshel", "Clive", "Aron", "Venuki", "Nidukshan", "Imalki", "Britny", "Michelle", "Sanjana", "Collin", "Senaya", "Vinesh", "Nigel", "Wilfred", "Dewvin", "Regina", "Buthmi", "Rumitha", "Sithumini", "Aenock", "Sachini", "Kanesha", "Rashmika"];
 var votedNames = [];
 var ChosenNames = [];
+var ipaddresses = [];
 
 var database = firebase.database();
 var VotedfirebaseRef = database.ref("VotedNames");
 var ChosenFirebaseRef = database.ref("ChosenNames");
+var IPAaddressFirebaseRef = database.ref("IPAddresses");
 
 
 let Form = document.getElementById("mainForm");
@@ -57,6 +59,19 @@ if(Names.value == "" ) {
 }
 
 readData();
+
+var ipaddress = "";
+
+// Using ipinfo.io to get the IP address
+fetch('https://ipinfo.io/json')
+  .then(response => response.json())
+  .then(data => {
+    ipaddress = data.ip;
+  })
+  .catch(error => {
+    console.error('Error fetching IP address:', error);
+});
+
 
 Names.addEventListener("change", checkforVotes, false);
 
@@ -169,6 +184,7 @@ function GenerateName(name) {
 
         writeUserData(VotingName, VotedfirebaseRef);
         writeUserData(chosenName, ChosenFirebaseRef);
+        writeUserData(ipaddress, IPAaddressFirebaseRef);
      } else if(SubmitButton.value == "See chosen Name") {
         let index = votedNames.indexOf(name);
         chosenName = ChosenNames[index];
@@ -223,6 +239,19 @@ function readData() {
           ChosenNames.push(userData);
         });
         console.log(ChosenNames);
+      })
+      .catch(function(error) {
+        console.error('Error reading data:', error);
+      });
+
+      IPAaddressFirebaseRef.once('value')
+      .then(function(snapshot) {
+
+        snapshot.forEach(function(childSnapshot) {
+          var userData = childSnapshot.val();
+          ipaddresses.push(userData);
+        });
+        console.log(ipaddresses);
       })
       .catch(function(error) {
         console.error('Error reading data:', error);
