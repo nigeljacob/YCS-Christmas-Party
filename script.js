@@ -67,23 +67,6 @@ if(Names.value == "" ) {
 }
 
 readData();
-setInterval(function() {
-    readData();
-    let votename = Names.value;
-
-    if(votedNames.includes(votename)) {
-        ErrorName.innerHTML = votename;
-        NameError.style.visibility = "visible";
-        SubmitButton.value = "See chosen Name"
-        SubmitButton.style.background = "#0000cc"
-    } else {
-        NameError.style.visibility = "hidden";
-        SubmitButton.style.opacity = "1"
-        SubmitButton.value = "Continue"
-        SubmitButton.style.background = "#cc0000"
-    }
-
-}, 5000);
 
 var emailAddress = "";
 
@@ -355,6 +338,7 @@ function readData() {
         console.error('Error reading data:', error);
       });
     
+
 }
 
 
