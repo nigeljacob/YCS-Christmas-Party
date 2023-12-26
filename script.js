@@ -191,7 +191,7 @@ Form.addEventListener('submit', function(event) {
                 let index = emailAddresses.indexOf(promtValue);
 
                 if(votedNames[index] != VotingName) {
-                    alert("The email doesn't mactch the email " + VotingName + " had used.. try again");
+                    alert("The email doesn't match the email " + VotingName + " had used.. try again");
                     continue;
                 }
 
