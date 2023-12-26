@@ -50,10 +50,10 @@ var emailAddress = "";
 
 nameNotListedError.addEventListener('click', event => {
     alert("Contact +94 76 241 1294 for more help.... \nand also how many times was the reminder sent on the group to add your name to that list... 🤦");
-})
+});
 
 
-if(Names.value == "" ) {
+if(Names.value == "") {
     SubmitButton.disabled = true;
     SubmitButton.style.background = "#A7A7A7"
     SubmitButton.style.opacity = "0.5"
@@ -100,6 +100,8 @@ Form.addEventListener('submit', function(event) {
             var emailPrompt = prompt("Enter your email address.. \nNote: if your not " + VotingName + " then don't try this cuz it may ruin that person's chance");
 
             let promtValue = emailPrompt.toUpperCase();
+
+            promtValue = promtValue.replace(/\s+/g, '');
     
             if(!emailAddresses.includes(promtValue)) {
         
@@ -176,10 +178,12 @@ Form.addEventListener('submit', function(event) {
         while(true) {
             var emailPrompt = prompt("Enter the email address " + VotingName + " used to choose their person");
 
-            let promtValue = emailPrompt.toUpperCase();
-    
+            var promtValue = emailPrompt.toUpperCase();
+
+            promtValue = promtValue = str.replace(/\s+/g, '');
+
             if(emailAddresses.includes(promtValue)) {
-    
+
                 let index = emailAddresses.indexOf(promtValue);
 
                 if(votedNames[index] != VotingName) {
@@ -325,7 +329,7 @@ function readData() {
           var userData = childSnapshot.val();
           votedNames.push(userData);
         });
-        // console.log(votedNames);
+        console.log(votedNames);
       })
       .catch(function(error) {
         console.error('Error reading data:', error);
@@ -338,7 +342,7 @@ function readData() {
           var userData = childSnapshot.val();
           emailAddresses.push(userData);
         });
-        // console.log(emailAddresses);
+        console.log(emailAddresses);
       })
       .catch(function(error) {
         console.error('Error reading data:', error);
