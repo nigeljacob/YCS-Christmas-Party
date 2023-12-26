@@ -31,6 +31,7 @@ let ErrorName = document.getElementById("ErrorName");
 let SubmitButton = document.getElementById("submitButton");
 let mainDiv = document.getElementById("text");
 let mainSection = document.getElementById("NameChooser");
+let nameNotListedError = document.getElementById("nameNotListedError");
 
 let chosenNameViewer = document.getElementById("chosenNameViewer");
 let box = document.getElementById("box");
@@ -46,6 +47,10 @@ let ChosenNameeEelemnt = document.getElementById("voteName");
 var VotingName = "";
 var chosenName = "";
 var emailAddress = "";
+
+nameNotListedError.addEventListener('click', event => {
+    alert("Contact +94 76 241 1294 to for more help.... \nand also how many times was the reminder sent on the group to add your name to that list... 🤦");
+})
 
 
 if(Names.value == "" ) {
