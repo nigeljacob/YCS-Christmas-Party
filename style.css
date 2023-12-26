@@ -363,17 +363,17 @@ button{
     
 }
 
-@media screen and (max-width: 200px) {
+@media screen and (max-width: 350px) {
 
     .ycs {
         width: 60px;
+        float: inline-start;
         
     }
 
     .smcd{
-        width: 30px;
-        margin-right: 5px 0px 5px 0px;
-        margin-top: 5px;
+        width: 35px;
+        float: inline-end;
     }
 
     .texts{
@@ -440,6 +440,74 @@ button{
     .texts #nameNotListed span{
         text-decoration: underline;
         color: #0000ff;
+    }
+
+    .spinWheel{
+        width: 120px;
+    }
+
+    .myName{
+        font-size: 15px;
+    }
+    
+    .spinner h3{
+        margin-top: 4px;
+        font-weight: 400;
+    }
+    
+    .nameBorder{
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 60px;
+    }
+    
+    .fireworks{
+        position: absolute;
+        visibility: hidden;
+        z-index: 2;
+        line-height: 60px;
+    }
+    
+    .box{
+        position: absolute;
+        opacity: 0;
+        width: 150px;
+        padding: 10px 20px 10px 20px;
+        border: 2px solid #A7A7A7;
+        visibility: hidden;
+        transition: 1.2s opacity ease ;
+        margin-top: 10px;
+        line-height: 60px;
+    }
+    
+    .box h1{
+        font-size: 15px;
+    }
+    
+    .message p {
+        font-size: 60%;
+    }
+    .message {
+        visibility: hidden;
+    }
+    
+    .message .second{
+        margin-top: 7px;
+        font-size: 50%;
+        color: #A7A7A7;
+    }
+    
+    button{
+        font-family: 'Poppins', sans-serif;
+        padding: 10px 20px 10px 20px;
+        background: #cc0000;
+        border-radius: 20px;
+        font-size: 80%;
+        border: none;
+        color: white;
+        margin-top: 10px;
     }
 
     
