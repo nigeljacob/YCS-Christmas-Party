@@ -13,8 +13,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
-var namesArray = ["Seneshi", "Shamasha", "Shashini", "Tenara", "Nicole", "Lihara", "Natheesha", "Trevor", "Thesanya", "Rithun", "Roshel", "Clive", "Aron", "Venuki", "Nidukshan", "Imalki", "Britny", "Michelle", "Sanjana", "Collin", "Senaya", "Vinesh", "Nigel", "Wilfred", "Dewvin", "Regina", "Buthmi", "Rumitha", "Sithumini", "Aenock", "Sachini", "Kanesha", "Rashmika", "Abilakshini", "Chenuki"];
-var ChosenNames = ['Aenock', 'Michelle', 'Britny', 'Kanesha', 'Nidukshan', 'Nigel', 'Roshel', 'Imalki', 'Venuki', 'Buthmi', 'Collin', 'Rashmika', 'Natheesha', 'Sanjana', 'Regina', 'Seneshi', 'Dewvin', 'Nicole', 'Tenara', 'Shamasha', 'Sithumini', 'Clive', 'Aron', 'Sachini', 'Shashini', 'Wilfred', 'Trevor', 'Lihara', 'Abilakshini', 'Chenuki', 'Vinesh', 'Thesanya', 'Rumitha', "Rithun", "Senaya"]
+var namesArray = ["Seneshi", "Shamasha", "Shashini", "Tenara", "Nicole", "Lihara", "Natheesha", "Trevor", "Thesanya", "Rithun", "Roshel", "Clive", "Aron", "Venuki", "Nidukshan", "Imalki", "Britny", "Michelle", "Sanjana", "Collin", "Senaya", "Vinesh", "Nigel", "Wilfred", "Dewvin", "Regina", "Buthmi", "Rumitha", "Sithumini", "Aenock", "Sachini", "Kanesha", "Rashmika", "Abilakshini", "Chenuki", "Joshua"];
+var ChosenNames = ['Aenock', 'Michelle', 'Britny', 'Kanesha', 'Nidukshan', 'Nigel', 'Roshel', 'Imalki', 'Venuki', 'Buthmi', 'Collin', 'Rashmika', 'Natheesha', 'Sanjana', 'Regina', 'Seneshi', 'Dewvin', 'Nicole', 'Tenara', 'Shamasha', 'Sithumini', 'Clive', 'Aron', 'Sachini', 'Shashini', 'Wilfred', 'Trevor', 'Lihara', 'Abilakshini', 'Chenuki', 'Vinesh', 'Thesanya', 'Joshua', "Rithun", "Senaya" , "Rumitha"]
 var votedNames = [];
 var emailAddresses = [];
 
