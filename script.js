@@ -13,8 +13,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
-var namesArray = ["Seneshi", "Shamasha", "Shashini", "Tenara", "Nicole", "Lihara", "Natheesha", "Trevor", "Thesanya", "Rithun", "Roshel", "Clive", "Aron", "Venuki", "Nidukshan", "Imalki", "Britny", "Michelle", "Sanjana", "Collin", "Senaya", "Vinesh", "Nigel", "Wilfred", "Dewvin", "Regina", "Buthmi", "Rumitha", "Sithumini", "Aenock", "Sachini", "Kanesha", "Rashmika"];
-var ChosenNames = ['Aenock', 'Michelle', 'Britny', 'Kanesha', 'Nidukshan', 'Nigel', 'Roshel', 'Imalki', 'Venuki', 'Buthmi', 'Collin', 'Rashmika', 'Natheesha', 'Sanjana', 'Regina', 'Seneshi', 'Dewvin', 'Nicole', 'Tenara', 'Shamasha', 'Sithumini', 'Clive', 'Aron', 'Sachini', 'Shashini', 'Wilfred', 'Trevor', 'Lihara', 'Rithun', 'Senaya', 'Vinesh', 'Thesanya', 'Rumitha']
+var namesArray = ["Seneshi", "Shamasha", "Shashini", "Tenara", "Nicole", "Lihara", "Natheesha", "Trevor", "Thesanya", "Rithun", "Roshel", "Clive", "Aron", "Venuki", "Nidukshan", "Imalki", "Britny", "Michelle", "Sanjana", "Collin", "Senaya", "Vinesh", "Nigel", "Wilfred", "Dewvin", "Regina", "Buthmi", "Rumitha", "Sithumini", "Aenock", "Sachini", "Kanesha", "Rashmika", "Abilakshini"];
+var ChosenNames = ['Aenock', 'Michelle', 'Britny', 'Kanesha', 'Nidukshan', 'Nigel', 'Roshel', 'Imalki', 'Venuki', 'Buthmi', 'Collin', 'Rashmika', 'Natheesha', 'Sanjana', 'Regina', 'Seneshi', 'Dewvin', 'Nicole', 'Tenara', 'Shamasha', 'Sithumini', 'Clive', 'Aron', 'Sachini', 'Shashini', 'Wilfred', 'Trevor', 'Lihara', 'Abilakshini', 'Senaya', 'Vinesh', 'Thesanya', 'Rumitha', "Rithun"]
 var votedNames = [];
 var emailAddresses = [];
 
@@ -49,7 +49,7 @@ var chosenName = "";
 var emailAddress = "";
 
 nameNotListedError.addEventListener('click', event => {
-    alert("Contact +94 76 241 1294 to for more help.... \nand also how many times was the reminder sent on the group to add your name to that list... 🤦");
+    alert("Contact +94 76 241 1294 for more help.... \nand also how many times was the reminder sent on the group to add your name to that list... 🤦");
 })
 
 
@@ -325,7 +325,7 @@ function readData() {
           var userData = childSnapshot.val();
           votedNames.push(userData);
         });
-        console.log(votedNames);
+        // console.log(votedNames);
       })
       .catch(function(error) {
         console.error('Error reading data:', error);
@@ -338,7 +338,7 @@ function readData() {
           var userData = childSnapshot.val();
           emailAddresses.push(userData);
         });
-        console.log(emailAddresses);
+        // console.log(emailAddresses);
       })
       .catch(function(error) {
         console.error('Error reading data:', error);
