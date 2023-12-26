@@ -16,13 +16,13 @@
         <img class="smcd" src="./Images/Logo 2 (Edited) (1).png" alt="logo">
     </div>
 
-   <section class="NameChooser">
+   <section class="NameChooser" id="NameChooser">
 
     <div class="texts" id="text">
         <div class="lottie">
             <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
-    <dotlottie-player src="https://lottie.host/62fb888e-35ef-4ad2-8129-801aee97c3e6/iGNQYNwFOL.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+        <dotlottie-player src="https://lottie.host/62fb888e-35ef-4ad2-8129-801aee97c3e6/iGNQYNwFOL.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
         </div>
         <h1>Secret Santa '23</h1>
         <p id="desc">You have been invited to the YCS Christmas Get-together '23.. <br>Fill in your name to continue</p>
@@ -74,49 +74,7 @@
         <p id="nameNotListed">Name not listed? <span>click here</span></p>
     </div>
 
-    
-   </section>
-
-   <section class="NameGenerator">
-
-    <div class="spinner">
-        <h1>Hi <span id="voteName"></span>,</h1>
-        <h3 id="text">Your Secret Friend is</h3>
-
-        
-        <div style="height: 200px;">
-            <div class="chosenContainer">
-                <div class="nameBorder">
-                    <div class="box" id="box">
-                        <h1 id="GivenName">Name</h1>
-                    </div>
-                </div>
-
-                <div class="fireworks" id="fireworks">
-                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-
-    <dotlottie-player src="https://lottie.host/9637f448-9393-465b-a177-2cab7d14f3e4/Mtldtl11zm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
-                </div>
-        
-                <div class="chosenNameViewer" id="chosenNameViewer">
-                    <img class="spinWheel" src="./Images/wheel.gif" alt="wheel">
-                </div>
-            </div>
-        </div>
-
-        <div class="message"  id="message">
-            <p>Prepare a gift for <span id="messageName">Name</span> before the 30th of December 2023.. <br>Gift budget: Rs. 1000 or below <br>and also make sure you don't tell <span id="messageName2">Name</span> anything about this 😉 ...</p>
-            <p class="second">You can view this name anytime you click on this link and choose your name</p>
-
-            <button onclick="location.reload()">Done</button>
-        </div>
-    </div>
-
-        
-    
-
-    
-   </section>
+    </section>
 
    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"> </script>
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"> </script>

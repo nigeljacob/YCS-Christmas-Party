@@ -28,6 +28,8 @@ let NameError = document.getElementById("nameError");
 let ErrorName = document.getElementById("ErrorName");
 let SubmitButton = document.getElementById("submitButton");
 let mainDiv = document.getElementById("text");
+let mainSection = document.getElementById("NameChooser");
+
 let chosenNameViewer = document.getElementById("chosenNameViewer");
 let box = document.getElementById("box");
 let text = document.getElementById("text");
@@ -36,9 +38,8 @@ let GivenName = document.getElementById("GivenName");
 let messageName = document.getElementById("messageName");
 let messageName2 = document.getElementById("messageName2");
 let message = document.getElementById("message");
-
-
 let ChosenNameeEelemnt = document.getElementById("voteName");
+
 
 
 var VotingName = "";
@@ -87,15 +88,63 @@ Form.addEventListener('submit', function(event) {
 
     VotingName = Names.value;
 
-    GenerateName(VotingName);
+    mainSection.style.opacity = "0";
+    
+    setTimeout(function() {
+        mainSection.style.opacity = "1";
+        mainSection.innerHTML = `
+        <div class="spinner">
+        <h1 id="myName">Hi <span id="voteName"></span>,</h1>
+        <h3 id="text">Your Secret Friend is</h3>
 
-    document.body.style.overflow = "scroll";
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
-    document.body.style.overflow = "hidden";
+        
+        <div style="height: 200px;">
+            <div class="chosenContainer">
+                <div class="nameBorder">
+                    <div class="box" id="box">
+                        <h1 id="GivenName">Name</h1>
+                    </div>
+                </div>
+
+                <div class="fireworks" id="fireworks">
+                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+    <dotlottie-player src="https://lottie.host/9637f448-9393-465b-a177-2cab7d14f3e4/Mtldtl11zm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+                </div>
+        
+                <div class="chosenNameViewer" id="chosenNameViewer">
+                    <img class="spinWheel" src="./Images/wheel.gif" alt="wheel">
+                </div>
+            </div>
+        </div>
+
+        <div class="message"  id="message">
+            <p>Prepare a gift for <span id="messageName">Name</span> before the 30th of December 2023.. <br>Gift budget: Rs. 1000 or below <br>and also make sure you don't tell <span id="messageName2">Name</span> anything about this 😉 ...</p>
+            <p class="second">You can view this name anytime you click on this link and choose your name</p>
+
+            <button onclick="location.reload()">Done</button>
+        </div>
+    </div>
+        `
+
+    chosenNameViewer = document.getElementById("chosenNameViewer");
+    box = document.getElementById("box");
+    text = document.getElementById("text");
+    fireworks = document.getElementById("fireworks");
+    GivenName = document.getElementById("GivenName");
+    messageName = document.getElementById("messageName");
+    messageName2 = document.getElementById("messageName2");
+    message = document.getElementById("message");
+    ChosenNameeEelemnt = document.getElementById("voteName");
+
+    GenerateName(VotingName);
+    }, 1000)
+
 
     ChosenNameeEelemnt.innerHTML = VotingName;
 
 });
+
 
 function nameGenerater(items) {
   
@@ -129,6 +178,7 @@ function GenerateName(name) {
     box.style.visibility = "visible";
 
     setTimeout(function() {
+
         fireworks.style.visibility = "visible"
         message.style.visibility = "visible"
         chosenNameViewer.style.opacity = "0";

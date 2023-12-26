@@ -10,7 +10,6 @@ body{
     background-size: 400% 400%;
     font-family: 'Poppins', sans-serif;
     animation: anim 15s ease infinite;
-    overflow: hidden;
 }
 
 section{
@@ -18,6 +17,7 @@ section{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    transition: 1s ease;
 }
 
 
@@ -199,6 +199,7 @@ button{
     color: white;
     margin-top: 10px;
 }
+
 @keyframes anim {
     0%{
         background-position: 0% 50%;
@@ -289,6 +290,74 @@ button{
     .texts #nameNotListed span{
         text-decoration: underline;
         color: #0000ff;
+    }
+
+    .spinWheel{
+        width: 150px;
+    }
+
+    .myName{
+        font-size: 20px;
+    }
+    
+    .spinner h3{
+        margin-top: 6px;
+        font-weight: 400;
+    }
+    
+    .nameBorder{
+        width: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 80px;
+    }
+    
+    .fireworks{
+        position: absolute;
+        visibility: hidden;
+        z-index: 2;
+        line-height: 80px;
+    }
+    
+    .box{
+        position: absolute;
+        opacity: 0;
+        width: 200px;
+        padding: 10px 20px 10px 20px;
+        border: 2px solid #A7A7A7;
+        visibility: hidden;
+        transition: 1.2s opacity ease ;
+        margin-top: 20px;
+        line-height: 80px;
+    }
+    
+    .box h1{
+        font-size: 20px;
+    }
+    
+    .message p {
+        font-size: 80%;
+    }
+    .message {
+        visibility: hidden;
+    }
+    
+    .message .second{
+        margin-top: 10px;
+        font-size: 60%;
+        color: #A7A7A7;
+    }
+    
+    button{
+        font-family: 'Poppins', sans-serif;
+        padding: 10px 20px 10px 20px;
+        background: #cc0000;
+        border-radius: 20px;
+        font-size: 80%;
+        border: none;
+        color: white;
+        margin-top: 10px;
     }
 
     
