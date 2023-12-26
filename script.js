@@ -106,9 +106,11 @@ Form.addEventListener('submit', function(event) {
     if(SubmitButton.value == "Continue") {
         while(true) {
             var emailPrompt = prompt("Enter your email address");
+
+            let promtValue = emailPrompt.toUpperCase();
     
-            if(!emailAddresses.includes(emailPrompt.toUpperCase)) {
-                let promtValue = emailPrompt.toUpperCase();
+            if(!emailAddresses.includes(promtValue)) {
+        
                 
                 if(!promtValue.includes("@")) {
                     alert("Invalid email entered");
@@ -181,10 +183,11 @@ Form.addEventListener('submit', function(event) {
     } else if(SubmitButton.value == "See chosen Name") {
         while(true) {
             var emailPrompt = prompt("Enter the email address " + VotingName + " used to choose their person");
+
+            let promtValue = emailPrompt.toUpperCase();
     
-            if(emailAddresses.includes(emailPrompt.toUpperCase)) {
-                let promtValue = emailPrompt.toUpperCase();
-                
+            if(emailAddresses.includes(promtValue)) {
+    
                 let index = emailAddresses.indexOf(promtValue);
 
                 if(!votedNames[index] == VotingName) {
