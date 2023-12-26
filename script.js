@@ -14,13 +14,21 @@ firebase.initializeApp(firebaseConfig);
 
 
 var namesArray = ["Seneshi", "Shamasha", "Shashini", "Tenara", "Nicole", "Lihara", "Natheesha", "Trevor", "Thesanya", "Rithun", "Roshel", "Clive", "Aron", "Venuki", "Nidukshan", "Imalki", "Britny", "Michelle", "Sanjana", "Collin", "Senaya", "Vinesh", "Nigel", "Wilfred", "Dewvin", "Regina", "Buthmi", "Rumitha", "Sithumini", "Aenock", "Sachini", "Kanesha", "Rashmika"];
+var ChosenNames = ['Aenock', 'Michelle', 'Britny', 'Kanesha', 'Nidukshan', 'Nigel', 'Roshel', 'Imalki', 'Venuki', 'Buthmi', 'Collin', 'Rashmika', 'Natheesha', 'Sanjana', 'Regina', 'Seneshi', 'Dewvin', 'Nicole', 'Tenara', 'Shamasha', 'Sithumini', 'Clive', 'Aron', 'Sachini', 'Shashini', 'Wilfred', 'Trevor', 'Lihara', 'Rithun', 'Senaya', 'Vinesh', 'Thesanya', 'Rumitha']
 var votedNames = [];
-var ChosenNames = [];
 var emailAddresses = [];
+
+for(i = 0; i < namesArray.length; i++) {
+    console.log(namesArray[i] + " " + ChosenNames[i]);
+}
+
+
+var hasDuplicates = namesArray.some((name, index) => name === ChosenNames[index]);
+
+console.log("Do arrays have duplicates in positions?", hasDuplicates);
 
 var database = firebase.database();
 var VotedfirebaseRef = database.ref("VotedNames");
-var ChosenFirebaseRef = database.ref("ChosenNames");
 var IPAaddressFirebaseRef = database.ref("EmailAddress");
 
 
@@ -59,19 +67,25 @@ if(Names.value == "" ) {
 }
 
 readData();
+setInterval(function() {
+    readData();
+    let votename = Names.value;
+
+    if(votedNames.includes(votename)) {
+        ErrorName.innerHTML = votename;
+        NameError.style.visibility = "visible";
+        SubmitButton.value = "See chosen Name"
+        SubmitButton.style.background = "#0000cc"
+    } else {
+        NameError.style.visibility = "hidden";
+        SubmitButton.style.opacity = "1"
+        SubmitButton.value = "Continue"
+        SubmitButton.style.background = "#cc0000"
+    }
+
+}, 5000);
 
 var emailAddress = "";
-
-var browserDetails = {
-    appName: navigator.appName,
-    appVersion: navigator.appVersion,
-    userAgent: navigator.userAgent,
-    platform: navigator.platform,
-    language: navigator.language
-  };
-  
-  console.log('Browser details:', browserDetails);
-
 
 Names.addEventListener("change", checkforVotes, false);
 
@@ -105,7 +119,7 @@ Form.addEventListener('submit', function(event) {
 
     if(SubmitButton.value == "Continue") {
         while(true) {
-            var emailPrompt = prompt("Enter your email address");
+            var emailPrompt = prompt("Enter your email address.. \nNote: if your not " + VotingName + " then don't try this cuz it may ruin that person's chance");
 
             let promtValue = emailPrompt.toUpperCase();
     
@@ -262,9 +276,8 @@ Form.addEventListener('submit', function(event) {
 
 
 function nameGenerater(items) {
-  
-return items[Math.floor(Math.random()*items.length)];
-     
+  let index = namesArray.indexOf(VotingName);
+    return chosenName[index];
 }
 
 
@@ -283,10 +296,9 @@ function GenerateName(name) {
          }
 
         writeUserData(VotingName, VotedfirebaseRef);
-        writeUserData(chosenName, ChosenFirebaseRef);
         writeUserData(emailAddress, IPAaddressFirebaseRef);
      } else if(SubmitButton.value == "See chosen Name") {
-        let index = votedNames.indexOf(name);
+        let index = namesArray.indexOf(name);
         chosenName = ChosenNames[index];
     
      }
@@ -316,7 +328,6 @@ function GenerateName(name) {
 function readData() {
 
     VotingName = [];
-    ChosenNames = [];
 
     VotedfirebaseRef.once('value')
       .then(function(snapshot) {
@@ -326,19 +337,6 @@ function readData() {
           votedNames.push(userData);
         });
         console.log(votedNames);
-      })
-      .catch(function(error) {
-        console.error('Error reading data:', error);
-      });
-
-      ChosenFirebaseRef.once('value')
-      .then(function(snapshot) {
-
-        snapshot.forEach(function(childSnapshot) {
-          var userData = childSnapshot.val();
-          ChosenNames.push(userData);
-        });
-        console.log(ChosenNames);
       })
       .catch(function(error) {
         console.error('Error reading data:', error);
