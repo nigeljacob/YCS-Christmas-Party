@@ -16,12 +16,12 @@ firebase.initializeApp(firebaseConfig);
 var namesArray = ["Seneshi", "Shamasha", "Shashini", "Tenara", "Nicole", "Lihara", "Natheesha", "Trevor", "Thesanya", "Rithun", "Roshel", "Clive", "Aron", "Venuki", "Nidukshan", "Imalki", "Britny", "Michelle", "Sanjana", "Collin", "Senaya", "Vinesh", "Nigel", "Wilfred", "Dewvin", "Regina", "Buthmi", "Rumitha", "Sithumini", "Aenock", "Sachini", "Kanesha", "Rashmika"];
 var votedNames = [];
 var ChosenNames = [];
-var ipaddresses = [];
+var emailAddresses = [];
 
 var database = firebase.database();
 var VotedfirebaseRef = database.ref("VotedNames");
 var ChosenFirebaseRef = database.ref("ChosenNames");
-var IPAaddressFirebaseRef = database.ref("IPAddresses");
+var IPAaddressFirebaseRef = database.ref("EmailAddress");
 
 
 let Form = document.getElementById("mainForm");
@@ -60,17 +60,17 @@ if(Names.value == "" ) {
 
 readData();
 
-var ipaddress = "";
+var emailAddress = "";
 
-// Using ipinfo.io to get the IP address
-fetch('https://ipinfo.io/json')
-  .then(response => response.json())
-  .then(data => {
-    ipaddress = data.ip;
-  })
-  .catch(error => {
-    console.error('Error fetching IP address:', error);
-});
+var browserDetails = {
+    appName: navigator.appName,
+    appVersion: navigator.appVersion,
+    userAgent: navigator.userAgent,
+    platform: navigator.platform,
+    language: navigator.language
+  };
+  
+  console.log('Browser details:', browserDetails);
 
 
 Names.addEventListener("change", checkforVotes, false);
@@ -103,60 +103,157 @@ Form.addEventListener('submit', function(event) {
 
     VotingName = Names.value;
 
-    mainSection.style.opacity = "0";
+    if(SubmitButton.value == "Continue") {
+        while(true) {
+            var emailPrompt = prompt("Enter your email address");
     
-    setTimeout(function() {
-        mainSection.style.opacity = "1";
-        mainSection.innerHTML = `
-        <div class="spinner">
-        <h1 id="myName">Hi <span id="voteName"></span>,</h1>
-        <h3 id="text">Your Secret Friend is</h3>
+            if(!emailAddresses.includes(emailPrompt.toUpperCase)) {
+                let promtValue = emailPrompt.toUpperCase();
+                
+                if(!promtValue.includes("@")) {
+                    alert("Invalid email entered");
+                    continue;
+                }
 
-        
-        <div style="height: 200px;">
-            <div class="chosenContainer">
-                <div class="nameBorder">
-                    <div class="box" id="box">
-                        <h1 id="GivenName">Name</h1>
+                emailAddress = promtValue;
+
+                mainSection.style.opacity = "0";
+    
+                setTimeout(function() {
+                    mainSection.style.opacity = "1";
+                    mainSection.innerHTML = `
+                    <div class="spinner">
+                    <h1 id="myName">Hi <span id="voteName"></span>,</h1>
+                    <h3 id="text">Your Secret Friend is</h3>
+
+                    
+                    <div style="height: 200px;">
+                        <div class="chosenContainer">
+                            <div class="nameBorder">
+                                <div class="box" id="box">
+                                    <h1 id="GivenName">Name</h1>
+                                </div>
+                            </div>
+
+                            <div class="fireworks" id="fireworks">
+                                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+                <dotlottie-player src="https://lottie.host/9637f448-9393-465b-a177-2cab7d14f3e4/Mtldtl11zm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+                            </div>
+                    
+                            <div class="chosenNameViewer" id="chosenNameViewer">
+                                <img class="spinWheel" src="./Images/wheel.gif" alt="wheel">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message"  id="message">
+                        <p>Prepare a gift for <span id="messageName">Name</span> before the 30th of December 2023.. <br>Gift budget: Rs. 1000 or below <br>and also make sure you don't tell <span id="messageName2">Name</span> anything about this 😉 ...</p>
+                        <p class="second">You can view this name anytime you click on this link and choose your name</p>
+
+                        <button onclick="location.reload()">Done</button>
                     </div>
                 </div>
+                    `
 
-                <div class="fireworks" id="fireworks">
-                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+                chosenNameViewer = document.getElementById("chosenNameViewer");
+                box = document.getElementById("box");
+                text = document.getElementById("text");
+                fireworks = document.getElementById("fireworks");
+                GivenName = document.getElementById("GivenName");
+                messageName = document.getElementById("messageName");
+                messageName2 = document.getElementById("messageName2");
+                message = document.getElementById("message");
+                ChosenNameeEelemnt = document.getElementById("voteName");
+                
 
-    <dotlottie-player src="https://lottie.host/9637f448-9393-465b-a177-2cab7d14f3e4/Mtldtl11zm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+                GenerateName(VotingName);
+
+                ChosenNameeEelemnt.innerHTML = VotingName;
+                }, 1000)
+
+                break;
+            } else {
+                alert("Email already in use... use a different email");
+                continue;
+            }
+        }
+    } else if(SubmitButton.value == "See chosen Name") {
+        while(true) {
+            var emailPrompt = prompt("Enter the email address " + VotingName + " used to choose their person");
+    
+            if(emailAddresses.includes(emailPrompt.toUpperCase)) {
+                let promtValue = emailPrompt.toUpperCase();
+                
+                let index = emailAddresses.indexOf(promtValue);
+
+                if(!votedNames[index] == VotingName) {
+                    alert("The email doesn't mactch the email " + VotingName + " had used.. try again");
+                    continue;
+                }
+
+                mainSection.style.opacity = "0";
+    
+                setTimeout(function() {
+                    mainSection.style.opacity = "1";
+                    mainSection.innerHTML = `
+                    <div class="spinner">
+                    <h1 id="myName">Hi <span id="voteName"></span>,</h1>
+                    <h3 id="text">Your Secret Friend is</h3>
+
+                    
+                    <div style="height: 200px;">
+                        <div class="chosenContainer">
+                            <div class="nameBorder">
+                                <div class="box" id="box">
+                                    <h1 id="GivenName">Name</h1>
+                                </div>
+                            </div>
+
+                            <div class="fireworks" id="fireworks">
+                                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+                <dotlottie-player src="https://lottie.host/9637f448-9393-465b-a177-2cab7d14f3e4/Mtldtl11zm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+                            </div>
+                    
+                            <div class="chosenNameViewer" id="chosenNameViewer">
+                                <img class="spinWheel" src="./Images/wheel.gif" alt="wheel">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message"  id="message">
+                        <p>Prepare a gift for <span id="messageName">Name</span> before the 30th of December 2023.. <br>Gift budget: Rs. 1000 or below <br>and also make sure you don't tell <span id="messageName2">Name</span> anything about this 😉 ...</p>
+                        <p class="second">You can view this name anytime you click on this link and choose your name</p>
+
+                        <button onclick="location.reload()">Done</button>
+                    </div>
                 </div>
-        
-                <div class="chosenNameViewer" id="chosenNameViewer">
-                    <img class="spinWheel" src="./Images/wheel.gif" alt="wheel">
-                </div>
-            </div>
-        </div>
+                    `
 
-        <div class="message"  id="message">
-            <p>Prepare a gift for <span id="messageName">Name</span> before the 30th of December 2023.. <br>Gift budget: Rs. 1000 or below <br>and also make sure you don't tell <span id="messageName2">Name</span> anything about this 😉 ...</p>
-            <p class="second">You can view this name anytime you click on this link and choose your name</p>
+                chosenNameViewer = document.getElementById("chosenNameViewer");
+                box = document.getElementById("box");
+                text = document.getElementById("text");
+                fireworks = document.getElementById("fireworks");
+                GivenName = document.getElementById("GivenName");
+                messageName = document.getElementById("messageName");
+                messageName2 = document.getElementById("messageName2");
+                message = document.getElementById("message");
+                ChosenNameeEelemnt = document.getElementById("voteName");
+                
 
-            <button onclick="location.reload()">Done</button>
-        </div>
-    </div>
-        `
+                GenerateName(VotingName);
 
-    chosenNameViewer = document.getElementById("chosenNameViewer");
-    box = document.getElementById("box");
-    text = document.getElementById("text");
-    fireworks = document.getElementById("fireworks");
-    GivenName = document.getElementById("GivenName");
-    messageName = document.getElementById("messageName");
-    messageName2 = document.getElementById("messageName2");
-    message = document.getElementById("message");
-    ChosenNameeEelemnt = document.getElementById("voteName");
+                ChosenNameeEelemnt.innerHTML = VotingName;
+                }, 1000)
 
-    GenerateName(VotingName);
-    }, 1000)
-
-
-    ChosenNameeEelemnt.innerHTML = VotingName;
+                break;
+            } else {
+                alert("Email not found.... type in the correct email");
+                continue;
+            }
+        }
+    }
 
 });
 
@@ -184,7 +281,7 @@ function GenerateName(name) {
 
         writeUserData(VotingName, VotedfirebaseRef);
         writeUserData(chosenName, ChosenFirebaseRef);
-        writeUserData(ipaddress, IPAaddressFirebaseRef);
+        writeUserData(emailAddress, IPAaddressFirebaseRef);
      } else if(SubmitButton.value == "See chosen Name") {
         let index = votedNames.indexOf(name);
         chosenName = ChosenNames[index];
@@ -249,9 +346,9 @@ function readData() {
 
         snapshot.forEach(function(childSnapshot) {
           var userData = childSnapshot.val();
-          ipaddresses.push(userData);
+          emailAddresses.push(userData);
         });
-        console.log(ipaddresses);
+        console.log(emailAddresses);
       })
       .catch(function(error) {
         console.error('Error reading data:', error);
