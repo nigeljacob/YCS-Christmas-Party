@@ -276,8 +276,8 @@ Form.addEventListener('submit', function(event) {
 
 
 function nameGenerater(items) {
-  let index = namesArray.indexOf(VotingName);
-    return chosenName[index];
+  let index = items.indexOf(VotingName);
+    return ChosenNames[index];
 }
 
 
@@ -298,8 +298,8 @@ function GenerateName(name) {
         writeUserData(VotingName, VotedfirebaseRef);
         writeUserData(emailAddress, IPAaddressFirebaseRef);
      } else if(SubmitButton.value == "See chosen Name") {
-        let index = namesArray.indexOf(name);
-        chosenName = ChosenNames[index];
+
+        chosenName = nameGenerater(namesArray);
     
      }
 
