@@ -18,14 +18,6 @@ var ChosenNames = ['Aenock', 'Michelle', 'Britny', 'Kanesha', 'Nidukshan', 'Nige
 var votedNames = [];
 var emailAddresses = [];
 
-for(i = 0; i < namesArray.length; i++) {
-    console.log(namesArray[i] + " " + ChosenNames[i]);
-}
-
-
-var hasDuplicates = namesArray.some((name, index) => name === ChosenNames[index]);
-
-console.log("Do arrays have duplicates in positions?", hasDuplicates);
 
 var database = firebase.database();
 var VotedfirebaseRef = database.ref("VotedNames");
@@ -51,9 +43,9 @@ let message = document.getElementById("message");
 let ChosenNameeEelemnt = document.getElementById("voteName");
 
 
-
 var VotingName = "";
 var chosenName = "";
+var emailAddress = "";
 
 
 if(Names.value == "" ) {
@@ -67,8 +59,6 @@ if(Names.value == "" ) {
 }
 
 readData();
-
-var emailAddress = "";
 
 Names.addEventListener("change", checkforVotes, false);
 
@@ -169,7 +159,7 @@ Form.addEventListener('submit', function(event) {
                 GenerateName(VotingName);
 
                 ChosenNameeEelemnt.innerHTML = VotingName;
-                }, 1000)
+                }, 1000);
 
                 break;
             } else {
@@ -266,20 +256,30 @@ function nameGenerater(items) {
 
 function GenerateName(name) {
 
-     if(SubmitButton.value == "Continue") {
-        while (true) {
-            chosenName = nameGenerater(namesArray);
-    
-         if(chosenName != name && !ChosenNames.includes(chosenName)) {
-            
-            break;
-         } else {
-            continue;
-         }
-         }
+    var available = false;
 
-        writeUserData(VotingName, VotedfirebaseRef);
-        writeUserData(emailAddress, IPAaddressFirebaseRef);
+     if(SubmitButton.value == "Continue") {
+        chosenName = nameGenerater(namesArray);
+
+        IPAaddressFirebaseRef.once('value')
+      .then(function(snapshot) {
+
+        snapshot.forEach(function(childSnapshot) {
+          var userData = childSnapshot.val();
+          if(userData == emailAddress) {
+            available = true;
+          }
+
+        });
+        if(!available) {
+            writeUserData(VotingName, VotedfirebaseRef);
+            writeUserData(emailAddress, IPAaddressFirebaseRef);
+        }
+      })
+      .catch(function(error) {
+        console.error('Error reading data:', error);
+      });
+
      } else if(SubmitButton.value == "See chosen Name") {
 
         chosenName = nameGenerater(namesArray);
@@ -311,6 +311,7 @@ function GenerateName(name) {
 function readData() {
 
     VotingName = [];
+    emailAddresses = [];
 
     VotedfirebaseRef.once('value')
       .then(function(snapshot) {
@@ -337,8 +338,6 @@ function readData() {
       .catch(function(error) {
         console.error('Error reading data:', error);
       });
-    
-
 }
 
 
