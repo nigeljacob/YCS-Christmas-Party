@@ -329,7 +329,7 @@ function readData() {
           var userData = childSnapshot.val();
           votedNames.push(userData);
         });
-        console.log(votedNames);
+        // console.log(votedNames);
       })
       .catch(function(error) {
         console.error('Error reading data:', error);
@@ -342,7 +342,7 @@ function readData() {
           var userData = childSnapshot.val();
           emailAddresses.push(userData);
         });
-        console.log(emailAddresses);
+        // console.log(emailAddresses);
       })
       .catch(function(error) {
         console.error('Error reading data:', error);
