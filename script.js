@@ -180,7 +180,7 @@ Form.addEventListener('submit', function(event) {
 
             var promtValue = emailPrompt.toUpperCase();
 
-            promtValue = promtValue = str.replace(/\s+/g, '');
+            promtValue = promtValue.replace(/\s+/g, '');
 
             if(emailAddresses.includes(promtValue)) {
 
